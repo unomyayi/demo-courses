@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Личный кабинет</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Добро пожаловать, <span id="userName"></span>!</h2>
+    <p>Это демо личного кабинета.</p>
+    <button id="logoutBtn">Выйти</button>
+  </div>
+
+  <script>
+    const name = localStorage.getItem("demo_name");
+    if (!name || !localStorage.getItem("demo_email")) {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("userName").textContent = name;
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("demo_name");
+      localStorage.removeItem("demo_email");
+      localStorage.removeItem("demo_password");
+      alert("Вы вышли из аккаунта");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
